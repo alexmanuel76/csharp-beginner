@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace MiPrimeraConexionConSqlserver
+{
+    public partial class FrmPopupEspecialidad : Form
+    {
+        public string accion{ get; set; }
+        public string idEspecialidad { get; set; }
+
+        public FrmPopupEspecialidad()
+        {
+            InitializeComponent();
+        }
+
+        private void FrmPopupEspecialidad_Load(object sender, EventArgs e)
+        {
+            if (accion.Equals("Nuevo"))
+            {
+                this.Text = "Agregar Especialidad";
+            }else if (accion.Equals("Editar"))
+            {
+                this.Text = "Editar Especialidad";
+                DataTable tablaDeDatos = SQL.ejecutarSPConsulta("spConsultarEspecialidad", "@i_id_especialidad", idEspecialidad);
+                TxtIdEspecialidad.Text = tablaDeDatos.Rows[0][0].ToString();
+                TxtEspecialidad.Text = tablaDeDatos.Rows[0][1].ToString();
+                TxtDescripcion.Text = tablaDeDatos.Rows[0][2].ToString();
+            }
+        }
+
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+    }
+}

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{21CEE3F6-E1F8-4614-A599-0C5946D3959E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MiPrimeraConexionConSqlserver</RootNamespace>
+    <AssemblyName>MiPrimeraConexionConSqlserver</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmClinicas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClinicas.Designer.cs">
+      <DependentUpon>frmClinicas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsultarMedicamentoPorFormaFarmaceutica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsultarMedicamentoPorFormaFarmaceutica.Designer.cs">
+      <DependentUpon>FrmConsultarMedicamentoPorFormaFarmaceutica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsultarMedicoPorEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsultarMedicoPorEspecialidad.Designer.cs">
+      <DependentUpon>FrmConsultarMedicoPorEspecialidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListadoEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListadoEspecialidad.Designer.cs">
+      <DependentUpon>frmListadoEspecialidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListadoMedicamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListadoMedicamentos.Designer.cs">
+      <DependentUpon>FrmListadoMedicamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListadoPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListadoPaciente.Designer.cs">
+      <DependentUpon>FrmListadoPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListarDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListarDoctor.Designer.cs">
+      <DependentUpon>FrmListarDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPopupClinica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPopupClinica.Designer.cs">
+      <DependentUpon>FrmPopupClinica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPopupDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPopupDoctor.Designer.cs">
+      <DependentUpon>FrmPopupDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPopupEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPopupEspecialidad.Designer.cs">
+      <DependentUpon>FrmPopupEspecialidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPopupMedicamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPopupMedicamentos.Designer.cs">
+      <DependentUpon>FrmPopupMedicamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPopupPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPopupPacientes.Designer.cs">
+      <DependentUpon>FrmPopupPacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQL.cs" />
+    <EmbeddedResource Include="frmClinicas.resx">
+      <DependentUpon>frmClinicas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsultarMedicamentoPorFormaFarmaceutica.resx">
+      <DependentUpon>FrmConsultarMedicamentoPorFormaFarmaceutica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsultarMedicoPorEspecialidad.resx">
+      <DependentUpon>FrmConsultarMedicoPorEspecialidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListadoEspecialidad.resx">
+      <DependentUpon>frmListadoEspecialidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListadoMedicamentos.resx">
+      <DependentUpon>FrmListadoMedicamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListadoPaciente.resx">
+      <DependentUpon>FrmListadoPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListarDoctor.resx">
+      <DependentUpon>FrmListarDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPopupClinica.resx">
+      <DependentUpon>FrmPopupClinica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPopupDoctor.resx">
+      <DependentUpon>FrmPopupDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPopupEspecialidad.resx">
+      <DependentUpon>FrmPopupEspecialidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPopupMedicamentos.resx">
+      <DependentUpon>FrmPopupMedicamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPopupPacientes.resx">
+      <DependentUpon>FrmPopupPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
