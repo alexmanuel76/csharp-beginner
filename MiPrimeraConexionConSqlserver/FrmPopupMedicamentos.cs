@@ -50,6 +50,9 @@ namespace MiPrimeraConexionConSqlserver
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             int resultado = 0;
+            string mensajeOk = "";
+            string mensajeNoOk = "";
+
             string nombre = TxtNombre.Text.ToUpper();
             string conentracion = TxtConcentracion.Text.ToUpper();
             string idFormaFarmaceutica = CboFormaFarmaceutica.SelectedValue.ToString();
@@ -65,23 +68,40 @@ namespace MiPrimeraConexionConSqlserver
                 return;
             }
 
-            if (accion.Equals("Nuevo"))
+            if (accion.Equals("Nuevo"))           //Crear Medicamento
             {
                 resultado = SQL.EjeutarSp("spInsertarMedicamentos",
                                       new ArrayList { "@i_nombre", "@i_concentracion", "@i_id_forma_farmaceutica",
                                                       "@i_precio", "@i_stock"        , "@i_presentacion" },
                                       new ArrayList { nombre     , conentracion      , idFormaFarmaceutica,
                                                       precio     , stock             , presentacion});
-                if (resultado == 1)
-                {
-                    MessageBox.Show("Medicamento Agregado Exitosamente", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("Problemas para agregar Medicamento o ya Existe", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.DialogResult = DialogResult.None;
-                }
+
+                mensajeOk = "Medicamento Agregado Exitosamente";
+                mensajeNoOk = "Problemas para agregar Medicamento o ya Existe";
+
+            }else if (accion.Equals("Editar"))   //Modificar Medicamento
+            {
+                resultado = SQL.EjeutarSp("spModificarMedicamento",
+                                      new ArrayList { "@i_id_medicamento"       , "@i_nombre", "@i_concentracion",
+                                                      "@i_id_forma_farmaceutica", "@i_precio", "@i_stock"        ,
+                                                      "@i_presentacion" },
+                                      new ArrayList { id                        , nombre     , conentracion      ,
+                                                      idFormaFarmaceutica       , precio     , stock             ,
+                                                      presentacion });
+
+                mensajeOk = "Medicamento Actualizado Exitosamente";
+                mensajeNoOk = "Problemas para Editar Medicamento o ya Existe";
+            }
+
+            if (resultado == 1)
+            {
+                MessageBox.Show(mensajeOk, "Mantenimiento de Medicameto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show(mensajeNoOk, "Mantenimiento de Medicamento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.None;
             }
         }
     }
