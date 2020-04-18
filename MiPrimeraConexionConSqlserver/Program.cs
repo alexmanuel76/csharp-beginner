@@ -17,7 +17,7 @@ namespace MiPrimeraConexionConSqlserver
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmListadoEspecialidad());
-            Application.Run(new FrmListadoPaciente());
+            Application.Run(new FrmListarDoctor());
 
         }
     }
