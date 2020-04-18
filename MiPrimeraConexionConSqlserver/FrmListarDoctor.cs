@@ -23,6 +23,10 @@ namespace MiPrimeraConexionConSqlserver
             ListadorGeneral();
         }
 
+        /**
+         * 
+         * Rutina para llegar el DataGrid General
+         * */
         private void ListadorGeneral()
         {
             SQL.listarConsultaSql("spListarDoctorPrograma", DgvDoctor, true);
@@ -60,6 +64,30 @@ namespace MiPrimeraConexionConSqlserver
             if (frmPopupDoctor.DialogResult.Equals(DialogResult.OK))
             {
                 ListadorGeneral();
+            }
+        }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea Eliminar el Doctor??", "Mantenimiento de Doctor",
+                                 MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                                 .Equals(DialogResult.Yes))
+            {
+                string idDoctor = DgvDoctor.CurrentRow.Cells[5].Value.ToString();
+                int resultado = SQL.EjeutarSp("spEliminarDoctor",
+                                               new System.Collections.ArrayList { "@i_id_doctor" },
+                                               new System.Collections.ArrayList { idDoctor });
+                if (resultado.Equals(1))
+                {
+                    MessageBox.Show("Doctor Eliminado con exito", "Mantenimiento de Doctor",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListadorGeneral();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar Doctor", "Mantenimiento de Doctor",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

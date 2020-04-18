@@ -68,5 +68,38 @@ namespace MiPrimeraConexionConSqlserver
                 listar();
             }
         }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("Desea Eliminar la Clinica?",
+                            "Mantenimiento de Clinicas",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question).Equals(DialogResult.Yes))
+            {
+                int resultado = SQL.EjeutarSp("spEliminarClinica",
+                                          new System.Collections.ArrayList { "@i_id_clinica" },
+                                          new System.Collections.ArrayList { dtgClinica.CurrentRow.Cells[0].Value.ToString() });
+                if (resultado.Equals(1))
+                {
+                    MessageBox.Show("Clinica Modificada con Exito", 
+                                    "Mantenimiento de Clinicas", 
+                                    MessageBoxButtons.OK, 
+                                    MessageBoxIcon.Information);
+                    listar();
+                }
+                else
+                {
+                    MessageBox.Show("Problemas para modificar la Clinica",
+                                    "Mantenimiento de Clinicas",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+            }
+
+            
+
+
+        }
     }
 }

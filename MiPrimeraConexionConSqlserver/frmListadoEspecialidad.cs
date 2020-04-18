@@ -21,10 +21,12 @@ namespace MiPrimeraConexionConSqlserver
 
         private void FrmListadoEspecialidad_Load(object sender, EventArgs e)
         {
-            SQL.listarConsultaSql("sp_listarEspecialidades", dtgEspecialidad,true);
+            ListarEspecialidades();
+        }
 
-
-           // dtgEspecialidad.DataSource = tabla;
+        private void ListarEspecialidades()
+        {
+            SQL.listarConsultaSql("sp_listarEspecialidades", dtgEspecialidad, true);
         }
 
         private void filtrarEspecialidad(object sender, EventArgs e)
@@ -40,7 +42,33 @@ namespace MiPrimeraConexionConSqlserver
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            if(MessageBox.Show("Desea Eliminar la especialidad?", 
+                               "Mantenimiento de Especialidad", 
+                               MessageBoxButtons.YesNo, 
+                               MessageBoxIcon.Question)
+                               .Equals(DialogResult.Yes))
+            {
+                int resultado = SQL.EjeutarSp("spEliminarEspecialidad",
+                                              new System.Collections.ArrayList { "@i_id_especialidad" },
+                                              new System.Collections.ArrayList { dtgEspecialidad.CurrentRow.Cells[0].Value.ToString() });
+                
+                if (resultado.Equals(1))
+                {
+                    MessageBox.Show("Especialidad eliminada con exito",
+                                    "Mantenimiento de Especialidad",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
 
+                    ListarEspecialidades();
+                }
+                else
+                {
+                    MessageBox.Show("Problemas para eliminar Especialidad",
+                                    "Mantenimiento de Especialidad",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
@@ -51,7 +79,7 @@ namespace MiPrimeraConexionConSqlserver
             frmPopupEspecialidad.ShowDialog();
             if (frmPopupEspecialidad.DialogResult.Equals(DialogResult.OK))
             {
-                SQL.listarConsultaSql("sp_listarEspecialidades", dtgEspecialidad, true);
+                ListarEspecialidades();
             }
         }
 
@@ -62,7 +90,7 @@ namespace MiPrimeraConexionConSqlserver
             frmPopupEspecialidad.ShowDialog();
             if (frmPopupEspecialidad.DialogResult.Equals(DialogResult.OK))
             {
-                SQL.listarConsultaSql("sp_listarEspecialidades", dtgEspecialidad, true);
+                ListarEspecialidades();
             }
         }
     }

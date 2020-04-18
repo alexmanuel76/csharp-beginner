@@ -63,6 +63,31 @@ namespace MiPrimeraConexionConSqlserver
                 Listar();
             }
         }
-        
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea Eliminar el Medicamento??",
+                                "Mantenimiento de Medicamento",
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Question)
+                               .Equals(DialogResult.Yes))
+            {
+                int resultado = SQL.EjeutarSp("spEliminarMedicamento",
+                                              new System.Collections.ArrayList { "@i_id_medicamento" },
+                                              new System.Collections.ArrayList { DgvMedicamentos.CurrentRow.Cells[0].Value.ToString() });
+
+                if (resultado.Equals(1))
+                {
+                    MessageBox.Show("Medicamento Eliminado con Exito", "Mantenimiento de Medicamentos",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Listar();
+                }
+                else
+                {
+                    MessageBox.Show("Problemas para eliminar Medicamento", "Mantenimiento de Medicamentos",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

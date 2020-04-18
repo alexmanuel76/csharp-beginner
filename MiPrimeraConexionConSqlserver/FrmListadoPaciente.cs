@@ -73,5 +73,29 @@ namespace MiPrimeraConexionConSqlserver
                 ListadoGeneral();
             }
         }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea Eliminar el Paciente??","Mantenimiento de Pacientes",
+                                 MessageBoxButtons.YesNo,MessageBoxIcon.Question)
+                                 .Equals(DialogResult.Yes))
+            {
+                string idPaciente = DgvPacientes.CurrentRow.Cells[0].Value.ToString();
+                int resultado = SQL.EjeutarSp("spEliminarPaciente", 
+                                               new System.Collections.ArrayList { "@i_id_paciente" },
+                                               new System.Collections.ArrayList { idPaciente });
+                if (resultado.Equals(1))
+                {
+                    MessageBox.Show("Paciente Eliminado con exito", "Mantenimiento de Pacientes",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListadoGeneral();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar paciente", "Mantenimiento de Pacientes",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

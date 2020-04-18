@@ -46,8 +46,14 @@ namespace MiPrimeraConexionConSqlserver
             string descripcion = TxtDescripcion.Text.ToUpper();
             if (accion.Equals("Nuevo"))
             {
-                MessageBox.Show("Agregar");
-            }else if (accion.Equals("Editar"))
+                resultado = SQL.EjeutarSp("uspInsertarEspecialidad",
+                                          new ArrayList { "@nombre"         , "@descripcion" },
+                                          new ArrayList { nombreEspecialidad, descripcion });
+
+                mensajeOk = "Especialidad Creada Exitosamente";
+                mensajeNoOk = "Problemas para crear la Especialidad";
+            }
+            else if (accion.Equals("Editar"))
             {
                 resultado = SQL.EjeutarSp("spModificarEspecialidad",
                                           new ArrayList { "@i_id_especialidad", "@i_nombre"       , "@i_descripcion" },
