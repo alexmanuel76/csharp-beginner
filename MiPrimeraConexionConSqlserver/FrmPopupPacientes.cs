@@ -51,11 +51,15 @@ namespace MiPrimeraConexionConSqlserver
                 TxtEnfermedades.Text = tablaDeDatos.Rows[0][12].ToString();
                 TxtVacunas.Text = tablaDeDatos.Rows[0][13].ToString();
                 TxtAntecedentes.Text = tablaDeDatos.Rows[0][14].ToString();
-                foto = (byte[])tablaDeDatos.Rows[0][15];
-                using (MemoryStream memoryStream = new MemoryStream(foto))
+                if (!tablaDeDatos.Rows[0][15].ToString().Equals(""))
                 {
-                    PbFfoto.Image = Image.FromStream(memoryStream);
+                    foto = (byte[])tablaDeDatos.Rows[0][15];
+                    using (MemoryStream memoryStream = new MemoryStream(foto))
+                    {
+                        PbFfoto.Image = Image.FromStream(memoryStream);
+                    }
                 }
+                
             }           
         }
 
@@ -96,20 +100,30 @@ namespace MiPrimeraConexionConSqlserver
             if (accion.Equals("Nuevo"))
             {
                 resultado = SQL.EjeutarSp("spPaciente", new ArrayList {"@i_nombre"          , "@i_apaterno"                , "@i_amaterno"     ,
-                                                                   "@i_email"           , "@i_direccion"               , "@i_telefono_fijo",
-                                                                   "@i_telefono_celular", "@i_fecha_nacimiento"        , "@i_id_sexo"      ,
-                                                                   "@i_id_tipo_sangre"  , "@i_alergias"                , "@i_enfermedades" ,
-                                                                   "@i_cuadro_vacunas"  , "@i_antecedentes_quirurgicos", "@i_foto" },
+                                                                       "@i_email"           , "@i_direccion"               , "@i_telefono_fijo",
+                                                                       "@i_telefono_celular", "@i_fecha_nacimiento"        , "@i_id_sexo"      ,
+                                                                       "@i_id_tipo_sangre"  , "@i_alergias"                , "@i_enfermedades" ,
+                                                                       "@i_cuadro_vacunas"  , "@i_antecedentes_quirurgicos", "@i_foto" },
                                                         new ArrayList { nombre              , apellidoPaterno              , apellidoMaterno   ,
-                                                                    email               , direccion                    , telefonoFijo      ,
-                                                                    telefonoCelular     , fechaNacimiento              , idSexo            ,
-                                                                    idTipoSangre        , alergias                     , enfermedades      ,
-                                                                    cuadroVacunas       ,antecedentes                  ,foto});
+                                                                        email               , direccion                    , telefonoFijo      ,
+                                                                        telefonoCelular     , fechaNacimiento              , idSexo            ,
+                                                                        idTipoSangre        , alergias                     , enfermedades      ,
+                                                                        cuadroVacunas       , antecedentes                 ,foto});
                 mensajeOk = "Paciente Agregado Exitosamente";
                 mensajeNoOk = "Problemas para agregar Paciente o ya Existe";
             }
             else if (accion.Equals("Editar"))
             {
+                resultado = SQL.EjeutarSp("spModificarPaciente", 
+                                           new ArrayList { "@i_id_paciente"     , "@i_nombre"        , "@i_apaterno"                , "@i_amaterno"         ,
+                                                           "@i_email"           , "@i_direccion"     , "@i_telefono_fijo"           ,  "@i_telefono_celular",
+                                                           "@i_fecha_nacimiento", "@i_id_sexo"       , "@i_id_tipo_sangre"          , "@i_alergias"         ,
+                                                           "@i_enfermedades"    , "@i_cuadro_vacunas", "@i_antecedentes_quirurgicos", "@i_foto" },
+                                           new ArrayList { idPaciente           , nombre             , apellidoPaterno              , apellidoMaterno       ,
+                                                           email                , direccion          , telefonoFijo                 , telefonoCelular       ,
+                                                           fechaNacimiento      , idSexo             , idTipoSangre                 , alergias              ,
+                                                           enfermedades         , cuadroVacunas      , antecedentes                 , foto});
+
                 mensajeOk = "Paciente modificado exitosamente";
                 mensajeNoOk = "No se pudo modificar el paciente";
             }

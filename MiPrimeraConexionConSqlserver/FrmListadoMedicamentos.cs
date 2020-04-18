@@ -58,6 +58,10 @@ namespace MiPrimeraConexionConSqlserver
             frmPopupMedicamentos.accion = "Editar";
             frmPopupMedicamentos.id = DgvMedicamentos.CurrentRow.Cells[0].Value.ToString();
             frmPopupMedicamentos.ShowDialog();
+            if (frmPopupMedicamentos.DialogResult == DialogResult.OK)
+            {
+                Listar();
+            }
         }
         
     }

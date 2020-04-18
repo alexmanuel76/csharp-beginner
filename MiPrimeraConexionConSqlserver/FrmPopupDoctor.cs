@@ -104,8 +104,19 @@ namespace MiPrimeraConexionConSqlserver
                                                                             fechaContrato     , bufferArchivo        , nombreArchivo});
                 mensajeOk = "Doctor Agregado Exitosamente";
                 mensajeNoOk = "Problemas para agregar Doctor o ya Existe";
+
             }else if (accion.Equals("Editar"))
             {
+                resultado = SQL.EjeutarSp("spCrearDoctor", new ArrayList { "@i_id_archivo"      , "@i_nombre"        , "@i_apellido_paterno",
+                                                                           "@i_apellido_materno", "@i_id_clinica"    , "@i_id_especialidad" ,
+                                                                           "@i_email"           , "@i_telefono"      , "@i_id_sexo"         ,
+                                                                           "@i_sueldo"          , "@i_fecha_contrato", "@i_archivo"         ,
+                                                                           "@i_nombre_archivo" },
+                                                           new ArrayList { this.id              , nombre             , apellidoPaterno      ,
+                                                                           apellidoMaterno      , idClinica          , especialidad         ,
+                                                                           email                , telefono           , idSexo               ,
+                                                                           sueldo               , fechaContrato      , bufferArchivo        ,
+                                                                           nombreArchivo });
                 mensajeOk = "Doctor Modificado con Exito";
                 mensajeNoOk = "Problemas para modificar el doctor";
             }
