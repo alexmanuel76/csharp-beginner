@@ -93,5 +93,10 @@ namespace MiPrimeraConexionConSqlserver
                 ListarEspecialidades();
             }
         }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            Impresora.Imprimir(PdImpresora, dtgEspecialidad);
+        }
     }
 }

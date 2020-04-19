@@ -90,5 +90,10 @@ namespace MiPrimeraConexionConSqlserver
                 }
             }
         }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            Impresora.Imprimir(PdImpresora, DgvDoctor,new List<int> { 1, 2, 3, 4 });
+        }
     }
 }

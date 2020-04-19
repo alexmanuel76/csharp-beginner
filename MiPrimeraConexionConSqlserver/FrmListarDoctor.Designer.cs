@@ -37,6 +37,7 @@
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.BtnEditar = new System.Windows.Forms.Button();
             this.BtnImprimir = new System.Windows.Forms.Button();
+            this.PdImpresora = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDoctor)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +133,7 @@
             this.BtnImprimir.TabIndex = 3;
             this.BtnImprimir.Text = "Imprimir";
             this.BtnImprimir.UseVisualStyleBackColor = true;
+            this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
             // 
             // FrmListarDoctor
             // 
@@ -164,5 +166,6 @@
         private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Button BtnEditar;
         private System.Windows.Forms.Button BtnImprimir;
+        private System.Drawing.Printing.PrintDocument PdImpresora;
     }
 }
