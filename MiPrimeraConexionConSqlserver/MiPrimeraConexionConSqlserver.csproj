@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cifrador.cs" />
     <Compile Include="frmClinicas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,11 +83,29 @@
     <Compile Include="FrmListadoPaciente.Designer.cs">
       <DependentUpon>FrmListadoPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListadoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListadoUsuarios.Designer.cs">
+      <DependentUpon>FrmListadoUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListarDoctor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmListarDoctor.Designer.cs">
       <DependentUpon>FrmListarDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenu.Designer.cs">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPopupClinica.cs">
       <SubType>Form</SubType>
@@ -118,6 +137,12 @@
     <Compile Include="FrmPopupPacientes.Designer.cs">
       <DependentUpon>FrmPopupPacientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPopupUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPopupUsuarios.Designer.cs">
+      <DependentUpon>FrmPopupUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Impresora.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,8 +165,17 @@
     <EmbeddedResource Include="FrmListadoPaciente.resx">
       <DependentUpon>FrmListadoPaciente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmListadoUsuarios.resx">
+      <DependentUpon>FrmListadoUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmListarDoctor.resx">
       <DependentUpon>FrmListarDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenu.resx">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPopupClinica.resx">
       <DependentUpon>FrmPopupClinica.cs</DependentUpon>
@@ -157,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPopupPacientes.resx">
       <DependentUpon>FrmPopupPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPopupUsuarios.resx">
+      <DependentUpon>FrmPopupUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

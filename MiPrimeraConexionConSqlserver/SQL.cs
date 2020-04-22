@@ -79,6 +79,23 @@ namespace MiPrimeraConexionConSqlserver
             return tabla;
         }
 
+        public static DataTable ejecutarSPConsulta(string consultaSQL, ArrayList parametros, ArrayList valores)
+        {
+            SqlCommand comandoSQL = new SqlCommand(consultaSQL, conexion);
+            comandoSQL.CommandType = CommandType.StoredProcedure;
+            for (int i = 0; i < parametros.Count; i++)
+            {
+                comandoSQL.Parameters.AddWithValue((string)parametros[i], valores[i]);
+            }
+
+            DataTable tabla = new DataTable();
+
+            SqlDataAdapter resultset = new SqlDataAdapter(comandoSQL);
+            resultset.Fill(tabla);
+
+            return tabla;
+        }
+
         /**
          * ejecutar un SP base a parametros y un HashSet (una mierda)
          * */
@@ -117,7 +134,6 @@ namespace MiPrimeraConexionConSqlserver
             comandoSQL.Connection.Open();
             resultado = comandoSQL.ExecuteNonQuery();
             comandoSQL.Connection.Close();
-
             return resultado;
         }
 
